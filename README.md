@@ -258,3 +258,8 @@ curl http://localhost:3000/health
 
 ## 📄 Licença
 MIT — ajuste conforme sua necessidade.
+
+## Links úteis
+- /docs
+- /health
+
