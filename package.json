@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+  "prepare": "husky",
   "dev": "nodemon --watch src --exec \"node src/server.js\"",
   "start": "node src/server.js",
   "lint": "eslint .",
@@ -13,8 +14,21 @@
   "db:migrate": "node-pg-migrate",
   "db:migrate:up": "node-pg-migrate up",
   "db:migrate:down": "node-pg-migrate down",
-  "db:seed": "node db/seeds/index.js"
+  "db:seed": "node db/seeds/index.js",
+  "db:seed:demo": "node db/seeds/index.js up --demo=true",
+  "db:seed:down": "node db/seeds/index.js down"
 },
+
+  "lint-staged": {
+  "*.{js,cjs,mjs,json}": [
+    "eslint --fix",
+    "prettier --write"
+  ],
+  "*.{md,yml,yaml}": [
+    "prettier --write"
+  ]
+},
+
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -38,6 +52,8 @@
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-promise": "^6.6.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.6",
     "node-pg-migrate": "^8.0.3",
     "nodemon": "^3.1.10",
     "prettier": "^3.6.2",

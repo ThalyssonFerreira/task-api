@@ -5,6 +5,8 @@ yarn.lock
 dist
 coverage
 .env
+.env.docker
 .env.*
+.DS_Store
 # Editor
 .vscode/
