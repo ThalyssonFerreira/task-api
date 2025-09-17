@@ -268,3 +268,14 @@ MIT — ajuste conforme sua necessidade.
 - /docs
 - /health
 
+## Deploy (Koyeb)
+- Base URL: https://monthly-jeralee-thalysson4-ed98086e.koyeb.app
+- Health: https://monthly-jeralee-thalysson4-ed98086e.koyeb.app/health
+- Swagger: https://monthly-jeralee-thalysson4-ed98086e.koyeb.app/docs
+
+### Insomnia (ambiente)
+{
+  "base_url": "https://monthly-jeralee-thalysson4-ed98086e.koyeb.app",
+  "access_token": "",
+  "refresh_token": ""
+}
