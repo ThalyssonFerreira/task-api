@@ -13,8 +13,10 @@ export async function buildApp() {
     logger: { transport: { target: 'pino-pretty' } }
   });
 
+
   await app.register(cors, { origin: true });
 
+  // OpenAPI base
   await app.register(swagger, {
     openapi: {
       openapi: '3.0.0',
@@ -29,19 +31,24 @@ export async function buildApp() {
     }
   });
 
+  // Swagger UI em /docs
   await app.register(swaggerUi, { routePrefix: '/docs' });
 
-  app.get('/', { schema: { hide: true } }, async (req, reply) => {
-    return reply.redirect(308, '/docs');
+ 
+  app.get('/', { schema: { hide: true } }, (req, reply) => {
+    return reply.code(308).redirect('/docs');
   });
 
+  // JWT
   await app.register(jwt, {
     secret: process.env.JWT_SECRET || 'change-me',
     sign: { expiresIn: process.env.JWT_EXPIRES_IN || '15m' }
   });
 
+  // Schemas reutilizáveis do Swagger
   await registerDocs(app);
 
+  // Decorator de autenticação
   app.decorate('authenticate', async function (req, reply) {
     try {
       await req.jwtVerify();
@@ -50,8 +57,10 @@ export async function buildApp() {
     }
   });
 
+  // Healthcheck
   app.get('/health', async () => ({ status: 'ok' }));
 
+  // Rotas
   app.register(authRoutes, { prefix: '/auth' });
   app.register(tasksRoutes, { prefix: '/tasks' });
 
