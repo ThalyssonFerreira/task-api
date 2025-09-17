@@ -31,12 +31,15 @@ export async function buildApp() {
 
   await app.register(swaggerUi, { routePrefix: '/docs' });
 
+  app.get('/', { schema: { hide: true } }, async (req, reply) => {
+    return reply.redirect(308, '/docs');
+  });
+
   await app.register(jwt, {
     secret: process.env.JWT_SECRET || 'change-me',
     sign: { expiresIn: process.env.JWT_EXPIRES_IN || '15m' }
   });
 
-  // registra schemas reutilizáveis para o Swagger
   await registerDocs(app);
 
   app.decorate('authenticate', async function (req, reply) {
@@ -49,7 +52,6 @@ export async function buildApp() {
 
   app.get('/health', async () => ({ status: 'ok' }));
 
-  // Rotas
   app.register(authRoutes, { prefix: '/auth' });
   app.register(tasksRoutes, { prefix: '/tasks' });
 
