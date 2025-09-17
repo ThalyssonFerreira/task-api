@@ -3,32 +3,30 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-  "prepare": "husky",
-  "dev": "nodemon --watch src --exec \"node src/server.js\"",
-  "start": "node src/server.js",
-  "lint": "eslint .",
-  "lint:fix": "eslint . --fix",
-  "format": "prettier --write .",
-  "test": "vitest run",
-  "test:watch": "vitest",
-  "db:migrate": "node-pg-migrate",
-  "db:migrate:up": "node-pg-migrate up",
-  "db:migrate:down": "node-pg-migrate down",
-  "db:seed": "node db/seeds/index.js",
-  "db:seed:demo": "node db/seeds/index.js up --demo=true",
-  "db:seed:down": "node db/seeds/index.js down"
-},
-
+    "prepare": "husky",
+    "dev": "nodemon --watch src --exec \"node src/server.js\"",
+    "start": "node src/server.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "db:migrate": "node-pg-migrate",
+    "db:migrate:up": "node-pg-migrate up",
+    "db:migrate:down": "node-pg-migrate down",
+    "db:seed": "node db/seeds/index.js",
+    "db:seed:demo": "node db/seeds/index.js up --demo=true",
+    "db:seed:down": "node db/seeds/index.js down"
+  },
   "lint-staged": {
-  "*.{js,cjs,mjs,json}": [
-    "eslint --fix",
-    "prettier --write"
-  ],
-  "*.{md,yml,yaml}": [
-    "prettier --write"
-  ]
-},
-
+    "*.{js,cjs,mjs,json}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{md,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
