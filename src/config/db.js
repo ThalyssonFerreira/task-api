@@ -6,7 +6,8 @@ const connectionString = process.env.DATABASE_URL;
 if (!connectionString) {
   throw new Error('DATABASE_URL ausente no .env');
 }
-
+//ssl neon
+const useSSL = (process.env.DATABASE_SSL || '').toLowerCase() === 'true';
 export const pool = new Pool({ connectionString });
 
 // helper simples
