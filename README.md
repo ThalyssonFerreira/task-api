@@ -263,3 +263,8 @@ MIT — ajuste conforme sua necessidade.
 - /docs
 - /health
 
+
+## Links úteis
+- /docs
+- /health
+

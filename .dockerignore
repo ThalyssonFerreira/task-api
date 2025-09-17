@@ -1,0 +1,9 @@
+Set-Content -Encoding UTF8 .dockerignore @'
+node_modules
+.git
+.env
+.env.*
+coverage
+dist
+.DS_Store
+'@
